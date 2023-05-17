@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:postIT.ViewModels"
+             x:Class="postIT.Views.LoginPage"
+             x:DataType="viewModels:LoginPageViewModel"
+             Title="Login Page"
+             BackgroundColor="{StaticResource postIT}">
+
+    <ScrollView>
+        <StackLayout
+            Spacing="15"
+            Padding="30,0">
+
+            <Image
+                Margin="70"
+                Source="postitwhite.png"
+                SemanticProperties.Description="postIT logo"
+                HeightRequest="125"
+                HorizontalOptions="Center" />
+
+            <Grid>
+                <Frame
+                    Opacity="0.2"
+                    BackgroundColor="WhiteSmoke" />
+                <Entry
+                    Text="{Binding Email}"
+                    Placeholder="Username"
+                    TextColor="White"
+                    FontSize="14" />
+            </Grid>
+
+             <Grid>
+                <Frame
+                    Opacity="0.2"
+                    BackgroundColor="WhiteSmoke" />
+                <Entry
+                    Text="{Binding Password}"
+                    Placeholder="Password"
+                    TextColor="White"
+                    FontSize="14"
+                    IsPassword="True"/>
+            </Grid>
+
+            <Button
+                x:Name="LoginBtn"
+                Style="{StaticResource Button}"
+                SemanticProperties.Hint="Logs a user in"
+                Command="{Binding goToHomePageCommand}"
+
+                Text="Login In"/>
+
+            <StackLayout>
+                <Button
+                    x:Name="SignupBtn"
+                    Style="{StaticResource Button}"
+                    SemanticProperties.Hint="Takes a user to sign in page"
+                    Command="{Binding RegisterUserCommand}"
+                    Text="Or Sign Up Here."/>
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

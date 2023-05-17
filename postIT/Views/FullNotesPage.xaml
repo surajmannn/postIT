@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:postIT.ViewModels"
+             x:Class="postIT.Views.FullNotesPage"
+             x:DataType="viewModels:FullNotesPageViewModel"
+             Title="Note">
+
+    <StackLayout Padding="10">
+
+        <Label Text="{Binding Text}"
+               TextColor="{StaticResource postIT}"
+               FontSize="20"
+               FontAttributes="Bold"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" />
+
+        <Editor Text="{Binding FullNote, Mode=TwoWay}"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Margin="10"
+                TextChanged="OnEditorTextChanged"
+                Completed="OnEditorCompleted"/>
+
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:postIT.ViewModels"
+             x:Class="postIT.Views.HomePage"
+             x:DataType="viewModels:HomePageViewModel"
+             Title="Home Page">
+
+    <VerticalStackLayout>
+        <Grid RowDefinitions="100, Auto"
+              Padding="10"
+              RowSpacing="10"
+              ColumnSpacing="10">
+
+            <Image Grid.ColumnSpan="2"
+                   Source="postitwhite.png"
+                   BackgroundColor="{StaticResource postIT}"/>
+        </Grid>
+
+        <Grid Padding="20,10">
+            <Frame Padding="10" HasShadow="True">
+                <Label HorizontalTextAlignment="Center"
+                    Text="Welcome To postIT" FontSize="24"/>
+            </Frame>
+        </Grid>
+
+        <Grid Padding="20,10">
+            <Frame Padding="10" HasShadow="True">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:HomePageViewModel}}, Path=TapCommand}"
+                        CommandParameter="JournalPage"/>
+                </Frame.GestureRecognizers>
+                <Label HorizontalTextAlignment="Center"
+                    Text="Your Journal" FontSize="24"/>
+            </Frame>
+        </Grid>
+
+        <Grid Padding="20,10">
+            <Frame Padding="10" HasShadow="True">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:HomePageViewModel}}, Path=TapCommand}"
+                        CommandParameter="NotesPage"/>
+                </Frame.GestureRecognizers>
+                <Label HorizontalTextAlignment="Center"
+                    Text="Create Notes" FontSize="24"/>
+            </Frame>
+        </Grid>
+
+        <Grid Padding="20,10">
+            <Frame Padding="10" HasShadow="True">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:HomePageViewModel}}, Path=TapCommand}"
+                        CommandParameter="TasksPage"/>
+                </Frame.GestureRecognizers>
+                <Label HorizontalTextAlignment="Center"
+                       Text="Create Tasks" FontSize="24"/>
+            </Frame>
+        </Grid>
+
+        <Grid Padding="20,80"
+              RowDefinitions="60,200">
+            <Frame Grid.Row="0" Padding="10" HasShadow="True">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:HomePageViewModel}}, Path=LoadWeatherCommand}"
+                        CommandParameter="LoadWeatherCommand"/>
+                </Frame.GestureRecognizers>
+                <Label HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       Text="The Current Weather is:" FontSize="24"/>
+            </Frame>
+            <Label Grid.Row="1"
+                   HorizontalTextAlignment="Center"
+                   Text="{Binding Temperature, Mode=TwoWay}"
+                   FontSize="35"
+                   TextColor="{StaticResource postIT}"/>
+        </Grid>
+
+    </VerticalStackLayout>
+    
+</ContentPage>

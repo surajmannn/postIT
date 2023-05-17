@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:postIT.ViewModels"
+             x:Class="postIT.Views.RegistrationPage"
+             x:DataType="viewModels:RegistrationPageViewModel"
+             Title="Registration Page"
+             BackgroundColor="{StaticResource postIT}">
+
+    <ScrollView>
+        <StackLayout
+            Spacing="15"
+            Padding="30,0">
+
+            <Image
+                Margin="70"
+                Source="postitwhite.png"
+                SemanticProperties.Description="postIT logo"
+                HeightRequest="125"
+                HorizontalOptions="Center" />
+
+            <Grid>
+                <Frame
+                    Opacity="0.2"
+                    BackgroundColor="WhiteSmoke" />
+                <Entry
+                    Text="{Binding Email}"
+                    Placeholder="Enter a Username"
+                    TextColor="White"
+                    FontSize="14" />
+            </Grid>
+
+             <Grid>
+                <Frame
+                    Opacity="0.2"
+                    BackgroundColor="WhiteSmoke" />
+                <Entry
+                    Text="{Binding Password}"
+                    Placeholder="Enter a Password"
+                    TextColor="White"
+                    FontSize="14"
+                    IsPassword="True"/>
+            </Grid>
+
+            <Grid>
+                <Frame
+                    Opacity="0.2"
+                    BackgroundColor="WhiteSmoke" />
+                <Entry
+                    Text="{Binding ConfirmPassword}"
+                    Placeholder="Re-enter Password"
+                    TextColor="White"
+                    FontSize="14"
+                    IsPassword="True"/>
+            </Grid>
+
+            <StackLayout>
+                <Button
+                    x:Name="SignupBtn"
+                    Style="{StaticResource Button}"
+                    SemanticProperties.Hint="Register user in page"
+                    Command="{Binding goToHomePageCommand}"
+                    Text="Register"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

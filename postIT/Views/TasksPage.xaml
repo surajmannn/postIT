@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:postIT.ViewModels"
+             xmlns:viewModels="clr-namespace:postIT.ViewModels"
+             x:Class="postIT.Views.TasksPage"
+             x:DataType="viewModels:TasksPageViewModel"
+             Title="Tasks">
+
+    <Grid RowDefinitions="100, Auto, Auto, Auto, *"
+          ColumnDefinitions=".75*, .25*"
+          Padding="10"
+          RowSpacing="10"
+          ColumnSpacing="10"
+          BackgroundColor="GhostWhite">
+
+        <Image Grid.ColumnSpan="2"
+               Source="postitwhite.png"
+               BackgroundColor="{StaticResource postIT}"/>
+
+        <Entry Placeholder="Enter Task"
+               Text="{Binding Text}"
+               Grid.Row="1"
+               BackgroundColor="White"/>
+
+        <DatePicker
+            Grid.Row="2"
+            BackgroundColor="White"
+            Date="{Binding SelectedDate}"/>
+
+        <Button Text="Add"
+                Command="{Binding AddCommand}"
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                TextColor="GhostWhite"
+                BackgroundColor="{StaticResource postIT}"
+                BorderColor="LightGray"/>
+
+        <Frame Grid.Row="3"
+               Grid.ColumnSpan="2"
+               HasShadow="True"
+               Frame.HeightRequest="60"
+               BackgroundColor="{StaticResource postIT}"
+               BorderColor="LightGrey">
+            <Label Text="Your Tasks"
+                   HorizontalOptions="Center"
+                   FontSize="20"
+                   TextColor="GhostWhite"
+                   FontAttributes="Bold"/>
+        </Frame>
+
+        <CollectionView Grid.Row="5" Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Tasks}">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate >
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                       BackgroundColor="Red"
+                                       Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:TasksPageViewModel}}, Path=DeleteCommand}"
+                                       CommandParameter="{Binding .}"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid Padding="0,5">
+                            <Frame>
+                                <Label Text="{Binding .}"
+                                       FontSize="24"/>
+                            </Frame>
+                            <Label Text="{Binding Source={RelativeSource AncestorType={x:Type local:TasksPageViewModel}}, Path=DaysLeft}"
+                                   HorizontalOptions="End"
+                                   FontSize="24"
+                                   Padding="24"/>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+
+</ContentPage>

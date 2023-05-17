@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:postIT.ViewModels"
+             x:Class="postIT.Views.FullJournalPage"
+             x:DataType="viewModels:FullJournalPageViewModel"
+             Title="Journal Entry">
+
+    <StackLayout Padding="10">
+
+        <Frame HasShadow="True"
+               Frame.HeightRequest="60">
+            <Label Text="{Binding Text}"
+                    FontSize="20"
+                    TextColor="GhostWhite"
+                    FontAttributes="Bold"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+        </Frame>
+
+        <Editor Text="{Binding FullJournal, Mode=TwoWay}"
+                Background="transparent"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Margin="3"
+                TextChanged="OnEditorTextChanged"
+                Completed="OnEditorCompleted"/>
+
+    </StackLayout>
+</ContentPage>
